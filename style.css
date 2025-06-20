@@ -344,3 +344,53 @@ body.productos-body {
     height: 180px;
   }
 }
+
+/* === Carrusel de Imágenes === */
+.carousel-container {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel img {
+  width: 100%;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 15px;
+}
+
+.carousel img.active {
+  display: block;
+}
+
+.carousel-container .prev,
+.carousel-container .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-container .prev {
+  left: 15px;
+}
+
+.carousel-container .next {
+  right: 15px;
+}
+
+.carousel-container .prev:hover,
+.carousel-container .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
