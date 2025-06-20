@@ -92,7 +92,8 @@
   }
   
   
-  button {
+  .boton-elegante {
+    display: inline-block;
     font-family: 'Cinzel', serif;
     padding: 15px 30px;
     font-size: 1rem;
@@ -102,10 +103,21 @@
     border-radius: 15px;
     width: 150px;
     cursor: pointer;
+    text-decoration: none;
     transition: all 0.3s ease;
-    font-weight: 600;
+    font-weight: 500;
     animation: pulse 2s infinite;
   }
+  
+  .boton-elegante:hover {
+    transform: scale(1.05);
+    background-color: #ffcc00;
+  }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }  
   
   @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
