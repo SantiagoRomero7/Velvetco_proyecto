@@ -324,12 +324,12 @@ body.productos-body {
   background-color: #222;
 }
 
-/* Mostrar carrito cuando no tiene la clase "oculto" */
+
 .carrito:not(.oculto) {
   transform: translateX(0%);
 }
 
-/* === Responsive === */
+
 @media (max-width: 768px) {
   .grid-productos {
     grid-template-columns: 1fr;
@@ -345,26 +345,38 @@ body.productos-body {
   }
 }
 
-/* === Carrusel de Imágenes === */
+
 .carousel-container {
   position: relative;
   width: 90%;
   max-width: 1000px;
-  margin: 2rem auto;
+  height: 45vh; 
+  margin: 2rem auto; 
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.carousel img {
+.carousel {
+  position: relative;
   width: 100%;
-  display: none;
+  height: 100%;
+}
+
+.carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border-radius: 15px;
+  z-index: 0;
 }
 
 .carousel img.active {
-  display: block;
+  opacity: 1;
+  z-index: 1;
 }
 
 .carousel-container .prev,
@@ -380,6 +392,7 @@ body.productos-body {
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
 .carousel-container .prev {
@@ -393,4 +406,32 @@ body.productos-body {
 .carousel-container .prev:hover,
 .carousel-container .next:hover {
   background-color: rgba(0,0,0,0.8);
+}
+
+
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 35vh; 
+    width: 95%;
+    margin: 1.5rem auto;
+  }
+
+  .carousel-container .prev,
+  .carousel-container .next {
+    font-size: 1.8rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 30vh; 
+    margin: 1rem auto;
+  }
+
+  .carousel-container .prev,
+  .carousel-container .next {
+    font-size: 1.5rem;
+    padding: 6px;
+  }
 }
