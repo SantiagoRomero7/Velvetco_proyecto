@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos - Lunaria</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-    
+
+<body class="productos-body">
+
+  <header class="encabezado">
+    <h1 class="titulo-seccion">Catálogo de Productos</h1>
+    <input type="text" id="busqueda" placeholder="Buscar productos...">
+    <select id="ordenar">
+      <option value="">Ordenar por...</option>
+      <option value="precio-asc">Precio: menor a mayor</option>
+      <option value="precio-desc">Precio: mayor a menor</option>
+      <option value="nombre">Nombre</option>
+    </select>
+    <select id="filtro-categoria">
+      <option value="">Todas las categorías</option>
+    </select>
+    <button id="ver-carrito">Carrito 🛒</button>
+  </header>
+
+  <main>
+    <section id="contenedor-productos" class="grid-productos"></section>
+  </main>
+
+  <aside id="carrito" class="carrito oculto">
+    <h2>Tu Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p class="total">Total: $<span id="total-carrito">0.00</span></p>
+    <button id="cerrar-carrito">Cerrar</button>
+  </aside>
+
+  <script src="productos.js"></script>
 </body>
+
 </html>
