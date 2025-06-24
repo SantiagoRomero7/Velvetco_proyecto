@@ -142,4 +142,47 @@ document.addEventListener('DOMContentLoaded', () => {
       renderizarProductos(filtrados);
     }
   
-    
+    // === Carrito ===
+    function agregarAlCarrito(producto) {
+      const existe = carrito.find(p => p.id === producto.id);
+      if (existe) {
+        existe.cantidad++;
+      } else {
+        carrito.push({ ...producto, cantidad: 1 });
+      }
+      guardarCarrito();
+      renderizarCarrito();
+    }
+  
+    function eliminarDelCarrito(id) {
+      carrito = carrito.filter(p => p.id !== id);
+      guardarCarrito();
+      renderizarCarrito();
+    }
+  
+    function guardarCarrito() {
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+  
+    function renderizarCarrito() {
+      listaCarrito.innerHTML = "";
+      let total = 0;
+  
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.title} x${item.cantidad} - $${(item.price * item.cantidad).toFixed(2)}
+          <button data-id="${item.id}">X</button>
+        `;
+        listaCarrito.appendChild(li);
+        total += item.price * item.cantidad;
+  
+        li.querySelector("button").addEventListener("click", () => {
+          eliminarDelCarrito(item.id);
+        });
+      });
+  
+      totalCarrito.textContent = total.toFixed(2);
+    }
+  
+   
