@@ -106,4 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-   
+    // === Renderizar Categorías ===
+    function renderizarCategorias() {
+      const categorias = ["Todas las categorías", ...new Set(productos.map(p => p.category))];
+      filtroCategoria.innerHTML = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join("");
+    }
+  
+    
