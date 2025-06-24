@@ -48,4 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarImagen(actual);
     iniciarIntervalo();
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const API_URL = "https://fakestoreapi.com/products";
+    const contenedor = document.getElementById("contenedor-productos");
+    const filtroCategoria = document.getElementById("filtro-categoria");
+    const ordenar = document.getElementById("ordenar");
+    const busqueda = document.getElementById("busqueda");
+    const verCarrito = document.getElementById("ver-carrito");
+    const cerrarCarrito = document.getElementById("cerrar-carrito");
+    const carritoAside = document.getElementById("carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalCarrito = document.getElementById("total-carrito");
   
+    let productos = [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  
+    // === Fetch de Productos ===
+    async function obtenerProductos() {
+      try {
+        const respuesta = await fetch(API_URL);
+        productos = await respuesta.json();
+        renderizarCategorias();
+        renderizarProductos(productos);
+      } catch (error) {
+        contenedor.innerHTML = "<p>Error al cargar productos.</p>";
+        console.error(error);
+      }
+    }
+  
+    
