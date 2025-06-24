@@ -78,4 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    
+    // === Renderizar Productos ===
+    function renderizarProductos(lista) {
+      contenedor.innerHTML = "";
+      lista.forEach(producto => {
+        const card = document.createElement("div");
+        card.className = "producto";
+        card.innerHTML = `
+          <img src="${producto.image}" alt="${producto.title}">
+          <h3>${producto.title}</h3>
+          <p>$${producto.price.toFixed(2)}</p>
+          <p class="categoria">${producto.category}</p>
+          <button data-id="${producto.id}">Agregar</button>
+        `;
+        contenedor.appendChild(card);
+  
+        gsap.from(card, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" });
+      });
+  
+     
