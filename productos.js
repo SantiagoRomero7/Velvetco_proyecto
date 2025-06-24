@@ -185,4 +185,22 @@ document.addEventListener('DOMContentLoaded', () => {
       totalCarrito.textContent = total.toFixed(2);
     }
   
-   
+    // === Eventos ===
+    filtroCategoria.addEventListener("change", aplicarFiltrosYOrden);
+    ordenar.addEventListener("change", aplicarFiltrosYOrden);
+    busqueda.addEventListener("input", aplicarFiltrosYOrden);
+  
+    verCarrito.addEventListener("click", () => {
+      carritoAside.classList.remove("oculto");
+    });
+  
+    cerrarCarrito.addEventListener("click", () => {
+      carritoAside.classList.add("oculto");
+    });
+  
+    // Inicializar
+    obtenerProductos();
+    renderizarCarrito();
+  });
+  
+  
