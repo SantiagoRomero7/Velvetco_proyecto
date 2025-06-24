@@ -112,4 +112,34 @@ document.addEventListener('DOMContentLoaded', () => {
       filtroCategoria.innerHTML = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join("");
     }
   
+    // === Filtrar y Ordenar ===
+    function aplicarFiltrosYOrden() {
+      let filtrados = [...productos];
+  
+      const categoriaSeleccionada = filtroCategoria.value;
+      if (categoriaSeleccionada && categoriaSeleccionada !== "Todas las categorías") {
+        filtrados = filtrados.filter(p => p.category === categoriaSeleccionada);
+      }
+  
+      const termino = busqueda.value.toLowerCase();
+      filtrados = filtrados.filter(p => 
+        p.title.toLowerCase().includes(termino) || 
+        p.description.toLowerCase().includes(termino)
+      );
+  
+      switch (ordenar.value) {
+        case "precio-asc":
+          filtrados.sort((a, b) => a.price - b.price);
+          break;
+        case "precio-desc":
+          filtrados.sort((a, b) => b.price - a.price);
+          break;
+        case "nombre":
+          filtrados.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+      }
+  
+      renderizarProductos(filtrados);
+    }
+  
     
