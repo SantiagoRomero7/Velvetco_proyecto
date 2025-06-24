@@ -203,4 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrito();
   });
   
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.encabezado');
+    if (window.scrollY > 20) {
+      header.classList.add('con-sombra');
+    } else {
+      header.classList.remove('con-sombra');
+    }
+  });
   

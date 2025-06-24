@@ -1,4 +1,3 @@
-/* === Reset y configuración global === */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +9,6 @@ body, html {
   font-family: 'Poppins', sans-serif;
 }
 
-/* === Fondo de video y overlay en pantalla de bienvenida === */
 #video-fondo {
   position: fixed;
   top: 0;
@@ -52,7 +50,7 @@ body, html {
   margin-bottom: 20px;
   font-weight: 600;
   line-height: 1.2;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .texto h1 span {
@@ -82,7 +80,7 @@ body, html {
   font-size: 1.2rem;
   margin-bottom: 30px;
   font-weight: 300;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); 
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .boton-elegante {
@@ -113,7 +111,6 @@ body, html {
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
 }
 
-/* === Vista de Productos === */
 body.productos-body {
   margin: 0;
   padding: 0;
@@ -123,7 +120,6 @@ body.productos-body {
   min-height: 100vh;
 }
 
-/* === Header === */
 .encabezado {
   background-color: #fff;
   padding: 1.5rem;
@@ -170,7 +166,6 @@ body.productos-body {
   background-color: #4b4dbf;
 }
 
-/* === Grid de Productos === */
 .grid-productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -178,7 +173,6 @@ body.productos-body {
   padding: 2rem;
 }
 
-/* === Tarjeta Producto con estilo moderno === */
 .producto {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(8px);
@@ -244,7 +238,6 @@ body.productos-body {
   transform: scale(1.05);
 }
 
-/* === Carrito Lateral === */
 .carrito {
   position: fixed;
   top: 0;
@@ -314,7 +307,6 @@ body.productos-body {
   transform: translateX(0%);
 }
 
-/* === Carrusel === */
 .carousel-container {
   position: relative;
   width: 90%;
@@ -377,7 +369,6 @@ body.productos-body {
   background-color: rgba(0,0,0,0.8);
 }
 
-/* === Responsive === */
 @media (max-width: 768px) {
   .grid-productos {
     grid-template-columns: 1fr;
@@ -411,4 +402,9 @@ body.productos-body {
     font-size: 1.5rem;
     padding: 6px;
   }
+}
+
+.encabezado.con-sombra {
+  box-shadow: 10px 10px 12px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
 }
