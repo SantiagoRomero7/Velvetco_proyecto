@@ -96,4 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from(card, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" });
       });
   
-     
+      // Botones Agregar
+      document.querySelectorAll(".producto button").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const id = parseInt(e.target.dataset.id);
+          const seleccionado = productos.find(p => p.id === id);
+          agregarAlCarrito(seleccionado);
+        });
+      });
+    }
+  
+   
