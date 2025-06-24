@@ -124,18 +124,11 @@ body.productos-body {
   background-color: #fff;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  position: fixed; 
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.05);
+  position: sticky;
   top: 0;
-  left: 0;         
-  width: 100%;     
   z-index: 999;
 }
-
-main {
-  margin-top: 130px; 
-}
-
 
 .titulo-seccion {
   font-family: 'Cinzel', serif;
