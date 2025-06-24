@@ -31,4 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     });
+
+     
+  const btnEntrar = document.getElementById("btn-entrar");
+
+  btnEntrar.addEventListener("click", (e) => {
+    e.preventDefault(); 
+
+  
+    gsap.to(".contenido", {
+      opacity: 0,
+      y: -60,
+      duration: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        
+        window.location.href = "./productos.html";
+      }
+    });
+
+    gsap.to(".overlay", {
+      backgroundColor: "rgba(0,0,0,0.8)",
+      duration: 1
+    });
+  });
+
   
