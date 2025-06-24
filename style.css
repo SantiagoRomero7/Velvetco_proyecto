@@ -1,149 +1,123 @@
-
+/* === Reset y configuración global === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  #video-fondo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -2;
-  }
-  
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: -1;
-  }
-  
+/* === Fondo de video y overlay en pantalla de bienvenida === */
+#video-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
 
-  .contenido {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    color: white;
-    text-align: center;
-  }
-  
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
 
-  .texto {
-    max-width: 600px;
-    padding: 20px;
-  }
-  
+.contenido {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+  text-align: center;
+}
+
+.texto {
+  max-width: 600px;
+  padding: 20px;
+}
+
 .texto h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-    line-height: 1.2;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
-  }
-  
-  .texto h1 span {
-    color: #ffd700;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-  }
-  
-  .texto h1 span::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    animation: shine 2.5s infinite;
-  }
-  
-  @keyframes shine {
-    0% { left: -100%; }
-    100% { left: 100%; }
-  }
-  
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+}
 
-  .texto p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    font-weight: 300;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); 
-  }
-  
-  
-  .boton-elegante {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    padding: 15px 30px;
-    font-size: 1rem;
-    background-color: #ffd700;
-    color: #000;
-    border: none;
-    border-radius: 15px;
-    width: 150px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    animation: pulse 2s infinite;
-  }
-  
-  .boton-elegante:hover {
-    transform: scale(1.05);
-    background-color: #ffcc00;
-  }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-        0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-    }  
-  
-  @media (max-width: 600px) {
-    .texto h1 {
-      font-size: 2.2rem;
-    }
-  
-    .texto p {
-      font-size: 1rem;
-    }
-  
-    button {
-      padding: 12px 24px;
-      font-size: 0.95rem;
-    }
-  }
-  
-  
-  
+.texto h1 span {
+  color: #ffd700;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
 
-  /* === Estilos Generales === */
+.texto h1 span::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.texto p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-weight: 300;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.boton-elegante {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  padding: 15px 30px;
+  font-size: 1rem;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  width: 150px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+.boton-elegante:hover {
+  transform: scale(1.05);
+  background-color: #ffcc00;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+}
+
+/* === Vista de Productos === */
 body.productos-body {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
   color: #333;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -174,7 +148,7 @@ body.productos-body {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 12px;
   outline: none;
   transition: 0.3s ease;
 }
@@ -182,6 +156,7 @@ body.productos-body {
 .encabezado input:focus,
 .encabezado select:focus {
   border-color: #5e60ce;
+  box-shadow: 0 0 5px rgba(94, 96, 206, 0.5);
 }
 
 #ver-carrito {
@@ -203,20 +178,23 @@ body.productos-body {
   padding: 2rem;
 }
 
-/* === Tarjeta Producto === */
+/* === Tarjeta Producto con estilo moderno === */
 .producto {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .producto:hover {
-  transform: translateY(-5px);
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .producto img {
@@ -224,6 +202,11 @@ body.productos-body {
   height: 220px;
   object-fit: contain;
   margin-bottom: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.producto:hover img {
+  transform: scale(1.08);
 }
 
 .producto h3 {
@@ -245,17 +228,20 @@ body.productos-body {
 
 .producto button {
   margin-top: auto;
-  background-color: #5e60ce;
+  background: linear-gradient(135deg, #5e60ce, #7b5ef7);
   color: white;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(94, 96, 206, 0.3);
 }
 
 .producto button:hover {
-  background-color: #4b4dbf;
+  background: linear-gradient(135deg, #7b5ef7, #a48cf7);
+  transform: scale(1.05);
 }
 
 /* === Carrito Lateral === */
@@ -324,34 +310,17 @@ body.productos-body {
   background-color: #222;
 }
 
-
 .carrito:not(.oculto) {
   transform: translateX(0%);
 }
 
-
-@media (max-width: 768px) {
-  .grid-productos {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-
-  .encabezado {
-    padding: 1rem;
-  }
-
-  .producto img {
-    height: 180px;
-  }
-}
-
-
+/* === Carrusel === */
 .carousel-container {
   position: relative;
   width: 90%;
   max-width: 1000px;
-  height: 45vh; 
-  margin: 2rem auto; 
+  height: 45vh;
+  margin: 2rem auto;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -367,7 +336,7 @@ body.productos-body {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border-radius: 15px;
@@ -408,25 +377,33 @@ body.productos-body {
   background-color: rgba(0,0,0,0.8);
 }
 
-
+/* === Responsive === */
 @media (max-width: 768px) {
-  .carousel-container {
-    height: 35vh; 
-    width: 95%;
-    margin: 1.5rem auto;
+  .grid-productos {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 
-  .carousel-container .prev,
-  .carousel-container .next {
-    font-size: 1.8rem;
-    padding: 8px;
+  .encabezado {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .producto img {
+    height: 180px;
+  }
+
+  .carousel-container {
+    height: 35vh;
+    width: 95%;
   }
 }
 
 @media (max-width: 480px) {
   .carousel-container {
-    height: 30vh; 
-    margin: 1rem auto;
+    height: 30vh;
   }
 
   .carousel-container .prev,
