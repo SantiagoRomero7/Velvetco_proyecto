@@ -5,13 +5,13 @@ Aplicación web responsive que consume productos desde una API pública, permite
 ## 📸 Capturas de Pantalla
 
 ### Pantalla de Inicio
-![alt text](image.png)
+![alt text](./img/image.png)
 
 ### Vista de Productos
-![alt text](image-1.png)
+![alt text](./img/image-1.png)
 
 ### Carrito Lateral
-![alt text](image-2.png)
+![alt text](./img/image-2.png)
 
 
 
