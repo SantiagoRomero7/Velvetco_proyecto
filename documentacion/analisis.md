@@ -13,6 +13,18 @@ Se optó por un diseño visual moderno, limpio y con enfoque en usabilidad móvi
 
 ---
 
+# Maquetaciòn 
+## Inicio 
+![alt text](image-1.png)
+## Catalogo productos y carrusel de imagenes
+![alt text](image.png)
+## VIsta previa de los productos 
+![alt text](image-2.png)
+## Carrito de compras
+![alt text](image-3.png)
+
+La maquetación del proyecto fue diseñada principalmente con canva y en el desarrollo se busco una similitud a la maquetaciòn o planeacion previa al desarollo buscando una estructura visual clara y jerárquica que facilita la navegación del usuario.En cuanto al nombre de la tienda, se tenia pensado lunaria, pero mientras se desarrollaba se busco un nombre màs elegante, quedando Velvet&co. Se utilizó una organización semántica en el HTML con secciones bien definidas como el encabezado fijo (con filtros, búsqueda y acceso al carrito), un cuerpo principal con productos dispuestos en cuadrícula responsiva, un carrito accesible en un aside y un footer que aporta cierre visual. Se aplicaron técnicas de maquetación modernas con CSS utilizando Flexbox, Grid y media queries para garantizar una experiencia responsive en dispositivos móviles, tablets y escritorios. Los estilos priorizan la legibilidad, el contraste, la estética moderna y la coherencia con el diseño propuesto, lo que refuerza la usabilidad y mejora la experiencia general del usuario. 
+
 ## 📦 2. Estructura de Datos Utilizada
 
 ### Productos
