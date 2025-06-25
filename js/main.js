@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power2.inOut",
       onComplete: () => {
         
-        window.location.href = "../html/productos.html"; 
+        window.location.href = "html/productos.html"; 
       }
     });
 
