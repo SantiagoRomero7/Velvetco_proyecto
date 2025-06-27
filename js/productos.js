@@ -1,15 +1,14 @@
 // === CARRUSEL AUTOMÁTICO CON ANIMACIONES ===
+
 // Espera que el DOM esté completamente cargado para ejecutar el carrusel
+// Esto garantiza que todos los elementos HTML ya estén disponibles para el script
 document.addEventListener('DOMContentLoaded', () => {
-  // Selecciona todas las imágenes del carrusel y los botones para avanzar o retroceder
   const imagenes = document.querySelectorAll('.carousel img');
   const btnPrev = document.querySelector('.prev');
   const btnNext = document.querySelector('.next');
-  let actual = 0; // Índice de la imagen actualmente mostrada en el carrusel
-  let intervalo;  // Variable para controlar el temporizador de rotación automática
+  let actual = 0;
+  let intervalo;
 
-  // Función que muestra una imagen según el índice recibido
-  // Aplica una animación de entrada con GSAP a la imagen visible
   function mostrarImagen(index) {
     imagenes.forEach((img, i) => {
       if (i === index) {
@@ -21,19 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cambia a la siguiente imagen del carrusel (cíclico)
   function siguienteImagen() {
     actual = (actual + 1) % imagenes.length;
     mostrarImagen(actual);
   }
 
-  // Cambia a la imagen anterior del carrusel (cíclico hacia atrás)
   function anteriorImagen() {
     actual = (actual - 1 + imagenes.length) % imagenes.length;
     mostrarImagen(actual);
   }
 
-  // Agrega funcionalidad a los botones: al hacer clic, cambia la imagen y reinicia el temporizador
   btnNext.addEventListener('click', () => {
     siguienteImagen();
     reiniciarIntervalo();
@@ -44,18 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     reiniciarIntervalo();
   });
 
-  // Inicia el intervalo de cambio automático de imagen cada 5 segundos
   function iniciarIntervalo() {
     intervalo = setInterval(siguienteImagen, 5000);
   }
 
-  // Reinicia el intervalo si el usuario interactúa manualmente
   function reiniciarIntervalo() {
     clearInterval(intervalo);
     iniciarIntervalo();
   }
 
-  // Muestra la imagen inicial y activa el carrusel automático
   mostrarImagen(actual);
   iniciarIntervalo();
 });
@@ -63,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === LÓGICA PRINCIPAL DE LA TIENDA ONLINE ===
 document.addEventListener("DOMContentLoaded", () => {
-  // Referencia a la API y elementos del DOM
   const API_URL = "https://fakestoreapi.com/products";
   const contenedor = document.getElementById("contenedor-productos");
   const filtroCategoria = document.getElementById("filtro-categoria");
@@ -75,11 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaCarrito = document.getElementById("lista-carrito");
   const totalCarrito = document.getElementById("total-carrito");
 
-  // Variables globales
-  let productos = []; // Array con los productos obtenidos desde la API
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || []; // Carrito recuperado de localStorage si existe
+  let productos = [];
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Fetch a la API para obtener los productos
   async function obtenerProductos() {
     try {
       const respuesta = await fetch(API_URL);
@@ -92,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Renderiza las tarjetas de productos en el DOM con animación
   function renderizarProductos(lista) {
     contenedor.innerHTML = "";
     lista.forEach(producto => {
@@ -107,11 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       contenedor.appendChild(card);
 
-      // Animación de entrada
       gsap.from(card, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" });
     });
 
-    // Agrega funcionalidad a cada botón "Agregar"
     document.querySelectorAll(".producto button").forEach(btn => {
       btn.addEventListener("click", e => {
         const id = parseInt(e.target.dataset.id);
@@ -121,13 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Genera dinámicamente las opciones de categorías
   function renderizarCategorias() {
     const categorias = ["Todas las categorías", ...new Set(productos.map(p => p.category))];
     filtroCategoria.innerHTML = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join("");
   }
 
-  // Filtra, busca y ordena productos según lo que seleccione o escriba el usuario
   function aplicarFiltrosYOrden() {
     let filtrados = [...productos];
 
@@ -157,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarProductos(filtrados);
   }
 
-  // Agrega un producto al carrito o incrementa su cantidad si ya existe
   function agregarAlCarrito(producto) {
     const existe = carrito.find(p => p.id === producto.id);
     if (existe) {
@@ -169,19 +153,16 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrito();
   }
 
-  // Elimina un producto del carrito por su ID
   function eliminarDelCarrito(id) {
     carrito = carrito.filter(p => p.id !== id);
     guardarCarrito();
     renderizarCarrito();
   }
 
-  // Guarda el carrito actual en localStorage
   function guardarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  // Muestra el contenido actual del carrito y su total
   function renderizarCarrito() {
     listaCarrito.innerHTML = "";
     let total = 0;
@@ -189,22 +170,47 @@ document.addEventListener("DOMContentLoaded", () => {
     carrito.forEach(item => {
       const li = document.createElement("li");
       li.innerHTML = `
-        ${item.title} x${item.cantidad} - $${(item.price * item.cantidad).toFixed(2)}
-        <button data-id="${item.id}">X</button>
+        ${item.title} <input type="number" min="1" value="${item.cantidad}" data-id="${item.id}" class="cantidad-input"> - $${(item.price * item.cantidad).toFixed(2)}
+        <button data-id="${item.id}" class="eliminar">X</button>
       `;
       listaCarrito.appendChild(li);
       total += item.price * item.cantidad;
 
-      // Elimina individualmente desde el carrito
-      li.querySelector("button").addEventListener("click", () => {
+      li.querySelector(".eliminar").addEventListener("click", () => {
         eliminarDelCarrito(item.id);
+      });
+
+      li.querySelector(".cantidad-input").addEventListener("change", (e) => {
+        const nuevaCantidad = parseInt(e.target.value);
+        const producto = carrito.find(p => p.id === item.id);
+        if (producto && nuevaCantidad > 0) {
+          producto.cantidad = nuevaCantidad;
+          guardarCarrito();
+          renderizarCarrito();
+        }
       });
     });
 
     totalCarrito.textContent = total.toFixed(2);
   }
 
-  // === EVENTOS DE INTERACCIÓN CON LA INTERFAZ ===
+  document.getElementById("vaciar-carrito").addEventListener("click", () => {
+    carrito = [];
+    guardarCarrito();
+    renderizarCarrito();
+  });
+
+  document.getElementById("realizar-compra").addEventListener("click", () => {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+    } else {
+      alert("¡Gracias por tu compra! Se ha procesado correctamente.");
+      carrito = [];
+      guardarCarrito();
+      renderizarCarrito();
+    }
+  });
+
   filtroCategoria.addEventListener("change", aplicarFiltrosYOrden);
   ordenar.addEventListener("change", aplicarFiltrosYOrden);
   busqueda.addEventListener("input", aplicarFiltrosYOrden);
@@ -217,13 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
     carritoAside.classList.add("oculto");
   });
 
-  // Inicializa la app: carga productos y carrito
   obtenerProductos();
   renderizarCarrito();
 });
 
 
-// Añade sombra al header cuando el usuario hace scroll
+// === SOMBRA AL HEADER AL HACER SCROLL ===
 window.addEventListener('scroll', () => {
   const header = document.querySelector('.encabezado');
   if (window.scrollY > 20) {

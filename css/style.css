@@ -423,3 +423,62 @@ body.productos-body {
 .footer-contenido p {
   margin: 0.3rem 0;
 }
+
+
+#vaciar-carrito {
+  background-color: #ff5722;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  margin: 10px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+#vaciar-carrito:hover {
+  background-color: #e64a19;
+  transform: translateY(-2px);
+}
+
+/* === Botón Realizar Compra === */
+#realizar-compra {
+  background-color: #009688;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  margin: 10px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+#realizar-compra:hover {
+  background-color: #00796b;
+  transform: translateY(-2px);
+}
+
+/* === Input para modificar cantidades en el carrito === */
+.cantidad-input {
+  width: 60px;
+  padding: 6px;
+  margin: 0 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cantidad-input:focus {
+  border-color: #009688;
+  box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
+  outline: none;
+}
