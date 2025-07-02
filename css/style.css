@@ -464,7 +464,7 @@ body.productos-body {
   transform: translateY(-2px);
 }
 
-/* === Input para modificar cantidades en el carrito === */
+
 .cantidad-input {
   width: 60px;
   padding: 6px;
@@ -481,4 +481,104 @@ body.productos-body {
   border-color: #009688;
   box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
   outline: none;
+}
+
+.oculto {
+  display: none;
+}
+
+.favoritos {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  max-width: 90%;
+  height: 100vh;
+  background-color: #fff;
+  padding: 1rem;
+  overflow-y: auto;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.lista-favoritos li {
+  margin-bottom: 1rem;
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+}
+
+#ver-favoritos {
+  background-color: #ff4b5c;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#ver-favoritos:hover {
+  background-color: #e04352;
+  transform: scale(1.05);
+}
+
+.agregar-favoritos {
+  background-color: transparent;
+  color: #ff4b5c;
+  border: 2px solid #ff4b5c;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.3rem;
+}
+
+.agregar-favoritos:hover {
+  background-color: #ff4b5c;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+
+.lista-favoritos button {
+  background-color: #ff4b5c;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.4rem;
+}
+
+.lista-favoritos button:hover {
+  background-color: #e04352;
+}
+
+#cerrar-favoritos {
+  background-color: #ccc;
+  color: #333;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+#cerrar-favoritos:hover {
+  background-color: #bbb;
+}
+
+.favorito-activo {
+  background-color: #ff4b5c !important;
+  color: #fff !important;
+  border-color: #ff4b5c !important;
 }

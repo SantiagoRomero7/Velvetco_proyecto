@@ -24,25 +24,26 @@
     <select id="filtro-categoria">
       <option value="">Todas las categorías</option>
     </select>
+    <button id="ver-favoritos">Favoritos</button>
     <button id="ver-carrito">Carrito 🛒</button>
   </header>
 
- 
-<section class="carousel-container">
-  <div class="carousel">
-    <img src="../img/descuento.jpg" alt="Promo 1" class="active">
-    <img src="../img/los-descuentos.jpg" alt="Promo 2">
-    <img src="../img/tienda-online.jpg" alt="Promo 3">
-  </div>
-  <button class="prev">&#10094;</button>
-  <button class="next">&#10095;</button>
-</section>
+  <section class="carousel-container">
+    <div class="carousel">
+      <img src="../img/descuento.jpg" alt="Promo 1" class="active">
+      <img src="../img/los-descuentos.jpg" alt="Promo 2">
+      <img src="../img/tienda-online.jpg" alt="Promo 3">
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </section>
 
 
   <main>
     <section id="contenedor-productos" class="grid-productos"></section>
   </main>
 
+ 
   <aside id="carrito" class="carrito oculto">
     <h2>Tu Carrito</h2>
     <ul id="lista-carrito"></ul>
@@ -52,17 +53,26 @@
     <button id="cerrar-carrito">Cerrar</button>
   </aside>
 
+
+  <aside id="favoritos-aside" class="favoritos oculto">
+    <h2>Favoritos</h2>
+    <button id="cerrar-favoritos">Cerrar</button>
+    <ul id="lista-favoritos" class="lista-favoritos"></ul>
+  </aside>
+
+  
   <div style="text-align:center; margin: 2rem;">
     <button id="btn-ver-mas" style="padding: 0.6rem 1.2rem; font-size: 1rem; display: none;">Ver más productos</button>
   </div>
-  
+
+ 
   <footer class="footer">
     <div class="footer-contenido">
       <p>&copy; 2025 Velvet & Co. Todos los derechos reservados.</p>
       <p>Desarrollado por Santiago Romero</p>
     </div>
   </footer>
-  
+
 
   <script src="../js/productos.js"></script>
 </body>

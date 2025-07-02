@@ -1,7 +1,5 @@
 // === CARRUSEL AUTOMÁTICO CON ANIMACIONES ===
 
-// Espera que el DOM esté completamente cargado para ejecutar el carrusel
-// Esto garantiza que todos los elementos HTML ya estén disponibles para el script
 document.addEventListener('DOMContentLoaded', () => {
   const imagenes = document.querySelectorAll('.carousel img');
   const btnPrev = document.querySelector('.prev');
@@ -61,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filtroCategoria = document.getElementById("filtro-categoria");
   const ordenar = document.getElementById("ordenar");
   const busqueda = document.getElementById("busqueda");
+  const verFavoritos = document.getElementById("ver-favoritos");
   const verCarrito = document.getElementById("ver-carrito");
   const cerrarCarrito = document.getElementById("cerrar-carrito");
   const carritoAside = document.getElementById("carrito");
@@ -69,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let productos = [];
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
   async function obtenerProductos() {
     try {
@@ -92,18 +92,25 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3>${producto.title}</h3>
         <p>$${producto.price.toFixed(2)}</p>
         <p class="categoria">${producto.category}</p>
-        <button data-id="${producto.id}">Agregar</button>
+        <button data-id="${producto.id}" class="agregar-carrito">Agregar al carrito</button>
+        <button data-id="${producto.id}" class="agregar-favoritos"> Favorito</button>
       `;
       contenedor.appendChild(card);
 
       gsap.from(card, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" });
-    });
 
-    document.querySelectorAll(".producto button").forEach(btn => {
-      btn.addEventListener("click", e => {
+      // Evento para agregar al carrito
+      card.querySelector(".agregar-carrito").addEventListener("click", e => {
         const id = parseInt(e.target.dataset.id);
         const seleccionado = productos.find(p => p.id === id);
         agregarAlCarrito(seleccionado);
+      });
+
+      // Evento para agregar a favoritos
+      card.querySelector(".agregar-favoritos").addEventListener("click", e => {
+        const id = parseInt(e.target.dataset.id);
+        const seleccionado = productos.find(p => p.id === id);
+        agregarAFavoritos(seleccionado);
       });
     });
   }
@@ -223,8 +230,61 @@ document.addEventListener("DOMContentLoaded", () => {
     carritoAside.classList.add("oculto");
   });
 
+  // FAVORITOS
+function agregarAFavoritos(producto) {
+  if (!favoritos.some(p => p.id === producto.id)) {
+    favoritos.push(producto);
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    renderizarFavoritos();
+  } else {
+    alert("Este producto ya está en favoritos.");
+  }
+}
+
+function eliminarDeFavoritos(id) {
+  favoritos = favoritos.filter(p => p.id !== id);
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  renderizarFavoritos();
+}
+
+function renderizarFavoritos() {
+  const listaFavoritos = document.getElementById("lista-favoritos");
+  listaFavoritos.innerHTML = "";
+
+  if (favoritos.length === 0) {
+    listaFavoritos.innerHTML = "<p>No tienes productos favoritos.</p>";
+    return;
+  }
+
+  favoritos.forEach(producto => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <img src="${producto.image}" alt="${producto.title}" width="50">
+      <h4>${producto.title}</h4>
+      <p>$${producto.price.toFixed(2)}</p>
+      <button data-id="${producto.id}" class="eliminar-favorito">Eliminar</button>
+    `;
+    listaFavoritos.appendChild(li);
+
+    li.querySelector(".eliminar-favorito").addEventListener("click", () => {
+      eliminarDeFavoritos(producto.id);
+    });
+  });
+}
+
+verFavoritos.addEventListener("click", () => {
+  renderizarFavoritos();
+  document.getElementById("favoritos-aside").classList.remove("oculto");
+});
+
+document.getElementById("cerrar-favoritos").addEventListener("click", () => {
+  document.getElementById("favoritos-aside").classList.add("oculto");
+});
+
+  // Inicialización
   obtenerProductos();
   renderizarCarrito();
+  renderizarFavoritos();
 });
 
 
